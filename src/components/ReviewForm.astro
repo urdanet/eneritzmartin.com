@@ -1,0 +1,57 @@
+---
+var rating = 0;
+---
+
+<form class="flex flex-col rating-form">
+  <label for="name">Nombre *</label>
+  <input type="text" id="name" required />
+  <label for="review">Tu valoración *</label>
+  <textarea id="review" required></textarea>
+
+  <div class="stars">
+    {
+      Array.from({ length: 5 }, (_, i) => (
+        <span class={`star ${i < rating ? "selected" : ""}`} onclick="">
+          ★
+        </span>
+      ))
+    }
+  </div>
+  <button class="bg-teal-500 p-2 rounded-2xl" type="submit">Enviar</button>
+
+  <style>
+    .rating-form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 0px solid #ddd;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .stars {
+      display: flex;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .star {
+      font-size: 24px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .star.selected {
+      color: gold;
+    }
+
+    textarea,
+    input {
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</form>

@@ -4,8 +4,8 @@ import translations from "@src/translations.json";
 
 // Images
 import navbar_img from "@src/assets/images/navbar.jpg";
-import ikurrina from "@src/assets/images/ikurrina.webp";
-import spain from "@src/assets/images/spain.png";
+import flag_ikurrina from "@src/assets/images/flag_ikurrina.webp";
+import flag_spain from "@src/assets/images/flag_spain.png";
 
 const url = Astro.url.pathname;
 const lang = url.startsWith("/eu") ? "eu" : "es";
@@ -125,7 +125,7 @@ const euPath = getEquivalentPath(url, lang, 'eu');
             <div class="flex items-center">
               🇪🇸
               <Image 
-                src={spain || "/placeholder.svg"} 
+                src={flag_spain || "/placeholder.svg"} 
                 alt="España" 
                 width={20} 
                 height={20}
@@ -142,7 +142,7 @@ const euPath = getEquivalentPath(url, lang, 'eu');
             <div class="flex items-center">
               🇪🇺
               <Image 
-                src={ikurrina || "/placeholder.svg"} 
+                src={flag_ikurrina || "/placeholder.svg"} 
                 alt="Euskera" 
                 width={20} 
                 height={20}

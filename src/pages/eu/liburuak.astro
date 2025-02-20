@@ -1,0 +1,40 @@
+---
+import Layout from "@layouts/Layout.astro"
+import Image from "astro/components/Image.astro";
+
+import translations from "@src/translations.json"
+
+const url = Astro.url.pathname;
+const lang = url.startsWith("/eu") ? "eu" : "es"; 
+const t = translations[lang];
+
+import bookImageEs from "@src/assets/images/portada_libro_es.jpg";
+import bookImageEu from "@src/assets/images/portada_libro_eu.jpg";
+
+const bookImage = lang === "eu" ? bookImageEu : bookImageEs;
+
+---
+
+<Layout lang={lang}>
+    <div class="max-w-3xl mx-auto mt-4">
+        <div class="flex gap-4">
+            <div class="flex-shrink-0 w-1/4 max-w-[200px] bg-white p-2 rounded">
+              <Image
+                src={bookImage || "/placeholder.svg"}
+                alt={t.book_img_description}
+                width={200}
+                height={100}
+                class="w-full h-auto object-contain"
+              />
+            </div>
+            <div class="flex-1 flex flex-col justify-center gap-6 text-center max-w-xl">
+                <p class="text-lg text-black/90 leading-relaxed">
+                    {t.book_text1}
+                </p>
+                <p class="text-lg text-black/90 leading-relaxed">
+                    {t.book_text2}
+                </p>
+            </div>
+          </div>
+    </div>
+</Layout>
