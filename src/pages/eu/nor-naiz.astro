@@ -1,7 +1,52 @@
 ---
+import translations from "@src/translations.json"
+
+// Componentes
 import Layout from "@src/layouts/Layout.astro"
+import Image from "astro/components/Image.astro";
+
+// Eneritz Images
+import eneritz1_img  from "@src/assets/images/eneritz1.jpg";
+import eneritz2_img  from "@src/assets/images/eneritz2.jpg";
+import eneritz3_img  from "@src/assets/images/eneritz3.jpg";
+
+const url = Astro.url.pathname;
+const lang = url.startsWith("/eu") ? "eu" : "es"; // Detectar idioma desde la URL
+const t = translations[lang]; // Cargar traducciones
 ---
 
-<Layout>
-    
+<Layout lang={lang}>
+    <h1 class="text-5xl text-blue-700 font-bold text-center mt-4 mb-6">¿ {t.about} ?</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+        <div class="relative">
+            <Image
+                src={eneritz1_img || "/placeholder.svg"}
+                alt="Eneritz Martín Díaz"
+                width={600}
+                height={400}
+                class="w-full h-auto rounded-lg shadow-lg"
+            />
+        </div>
+        <div class="relative">
+            <Image
+                src={eneritz2_img || "/placeholder.svg"}
+                alt="Eneritz Martín Díaz"
+                width={600}
+                height={400}
+                class="w-full h-auto rounded-lg shadow-lg"
+            />
+        </div>
+        <div class="relative">
+            <Image
+                src={eneritz3_img || "/placeholder.svg"}
+                alt="Eneritz Martín Díaz"
+                width={600}
+                height={400}
+                class="w-full h-auto rounded-lg shadow-lg"
+            />
+        </div>
+    </div>
+    <div class="max-w-3xl mx-auto text-center mb-12">
+        <p class="text-lg text-gray-700 leading-relaxed">{t.about_text}</p>
+    </div>
 </Layout>
