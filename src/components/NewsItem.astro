@@ -1,0 +1,32 @@
+---
+interface Props {
+  logo: ImageMetadata;
+  title: string;
+  description: string;
+  logoAlt: string;
+  href?: string;
+}
+
+import { Image } from 'astro:assets';
+
+const { logo, title, description, logoAlt, href = "#" } = Astro.props
+---
+<article class="bg-teal-500 text-white mb-4 overflow-hidden hover:bg-teal-600 transition-colors">
+  <a href={href} class="block p-4">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0 w-1/4 max-w-[200px] bg-white p-2 rounded">
+        <Image
+          src={logo || "/placeholder.svg"}
+          alt={logoAlt}
+          width={200}
+          height={100}
+          class="w-full h-auto object-contain"
+        />
+      </div>
+      <div class="flex-grow">
+        <h3 class="text-xl font-bold mb-2">{title}</h3>
+        <p class="text-white/90">{description}</p>
+      </div>
+    </div>
+  </a>
+</article>

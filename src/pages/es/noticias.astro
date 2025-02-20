@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/Layout.astro"
+import NewsItem from "@src/components/NewsItem.astro"
+
+// Images
+import noticias_goierriko_hitza from "@src/assets/images/noticias_goierriko_hitza.png"
+import noticias_guipuzkoa_img from "@src/assets/images/noticias_gipuzkoa.webp"
+---
+
+<Layout>
+    <div class="max-w-3xl mx-auto mt-4">
+        <NewsItem
+        logo={noticias_goierriko_hitza}
+        title="El debut literario de Eneritz Martín"
+        description="‘Estela. el viaje’ es el primer libro de esta joven beasaindarra; Una historia de superación y aventuras"
+        logoAlt="Noticias Goierriko Hitza"
+        />
+        <NewsItem
+            logo={noticias_guipuzkoa_img}
+            title="Gainditze eta abentura istorio bat"
+            description="Eneritz Martin Diaz beasaindarrak ‘Estela, bidaia’ eleberri laburra argitaratu du euskaraz. Bere gainditze istorio pertsonalean oinarrituta dago."
+            logoAlt="Noticias Gipuzkoa"
+        />
+    </div>
+</Layout>
