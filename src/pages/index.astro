@@ -1,13 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
+import translations from "@src/menus.json";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Layout
+import Layout from "@src/layouts/Layout.astro";
+
+// Components
+import Title from "@src/components/Title.astro";
+
+// Importar componentes
+import Image from "astro/components/Image.astro";
+
+// Images
+import charla1_img from "@src/assets/images/charla2.jpg";
+import firma_img from "@src/assets/images/firma.jpg";
+import libros_img from "@src/assets/images/libros.jpg";
+
+const url = Astro.url.pathname;
+const lang = url.startsWith("/eu") ? "eu" : "es"; 
+const t = translations[lang];
 ---
 
-<Layout>
-	<h1 class="text-lg text-red-500">HELLO</h1>
-	<Welcome />
+<Layout lang={lang}>
+  
+  <Title />
+  <div class="relative w-full max-w-4xl mx-auto mb-8">
+    <Image
+      src={charla1_img || "/placeholder.svg"}
+      alt="Evento de Eneritz Martín Díaz"
+      width={1200}
+      height={600}
+      class="w-full h-auto rounded-lg shadow-lg"
+    />
+  </div>
+
+  <div class="max-w-3xl mx-auto text-center mb-12">
+    <p class="text-lg text-gray-700 leading-relaxed">{t.principal_text}</p>
+  </div>
+  <!-- Additional Images Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+    <div class="relative">
+      <Image
+        src={libros_img || "/placeholder.svg"}
+        alt="Libro ESTELA"
+        width={600}
+        height={400}
+        class="w-full h-auto rounded-lg shadow-lg"
+      />
+    </div>
+    <div class="relative">
+      <Image
+        src={firma_img || "/placeholder.svg"}
+        alt="Firma de libros"
+        width={600}
+        height={400}
+        class="w-full h-auto rounded-lg shadow-lg"
+      />
+    </div>
+  </div>
 </Layout>

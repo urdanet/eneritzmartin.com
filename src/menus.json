@@ -1,0 +1,18 @@
+{
+  "es": {
+    "title": "Bienvenido a mi sitio web",
+    "about": "Quién soy",
+    "news": "Noticias",
+    "books": "Libros",
+    "buy": "Comprar",
+    "principal_text" : "¡Ya está aquí ESTELA: El viaje! Una historia de aventuras y superación que te invitará a reflexionar sobre la vida y sus desafíos. A través de sus páginas, te encontrarás con preguntas que te harán mirar la vida desde una nueva perspectiva."
+  },
+  "eu": {
+    "title": "Ongi etorri nire webgunera",
+    "about": "Nor naiz",
+    "news": "Berriak",
+    "books": "Liburuak",
+    "buy": "Erosi",
+    "principal_text": "Hemen da ESTELA: Bidaia! Gainditze eta abentuaz beteriko istorio bat, bizitzari eta haren erronkei buruz hausnartzera gonbidatuko zaituena. Orri bakoitzean, bizitza beste ikuspuntu batetik ikustea eragingo dizuten galderak aurkituko dituzu."
+  }
+}

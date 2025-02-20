@@ -1,5 +1,11 @@
+---
+import Navbar from "@src/components/Navbar.astro"
+import Footer from "@src/components/Footer.astro"
+
+import '@src/styles/global.css';
+---
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -8,7 +14,13 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<slot />
+		<header>
+			<Navbar  />
+		</header>
+		<main>
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 

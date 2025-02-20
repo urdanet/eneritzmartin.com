@@ -1,0 +1,228 @@
+---
+import { Image } from 'astro:assets';
+import translations from "@src/menus.json";
+
+// Images
+import navbar_img from "@src/assets/images/navbar.jpg";
+import ikurrina from "@src/assets/images/ikurrina.webp";
+import spain from "@src/assets/images/spain.png";
+
+const url = Astro.url.pathname;
+const lang = url.startsWith("/eu") ? "eu" : "es";
+
+// Mapeo de rutas entre idiomas
+const routeMapping = {
+  es: {
+    '/': '/',
+    '/quien-soy': '/nor-naiz',
+    '/noticias': '/albisteak',
+    '/libros': '/liburuak',
+    '/comprar': '/erosi'
+  },
+  eu: {
+    '/': '/',
+    '/nor-naiz': '/quien-soy',
+    '/albisteak': '/noticias',
+    '/liburuak': '/libros',
+    '/erosi': '/comprar'
+  }
+};
+
+// Función para obtener la ruta equivalente en el otro idioma
+function getEquivalentPath(currentPath: string, currentLang: string, targetLang: string) {
+  // Eliminar el prefijo del idioma actual
+  const pathWithoutLang = currentPath.replace(`/${currentLang}`, '');
+  
+  // Si es la página de inicio
+  if (pathWithoutLang === '' || pathWithoutLang === '/') {
+    return `/${targetLang}`;
+  }
+
+  // Obtener el mapeo para el idioma actual
+  const mapping = routeMapping[currentLang];
+  
+  // Encontrar la ruta equivalente
+  for (const [key, value] of Object.entries(mapping)) {
+    if (pathWithoutLang === key) {
+      return `/${targetLang}${value}`;
+    }
+  }
+
+  // Si no se encuentra mapeo, devolver la página de inicio del idioma objetivo
+  return `/${targetLang}`;
+}
+
+const menuItems = [
+  { 
+    href: `/${lang}/`, 
+    text: lang === 'es' ? 'Inicio' : 'Hasiera' 
+  },
+  { 
+    href: `/${lang}${lang === 'es' ? '/quien-soy' : '/nor-naiz'}`, 
+    text: lang === 'es' ? 'Quién soy' : 'Nor naiz' 
+  },
+  { 
+    href: `/${lang}${lang === 'es' ? '/noticias' : '/albisteak'}`, 
+    text: lang === 'es' ? 'Noticias' : 'Albisteak' 
+  },
+  { 
+    href: `/${lang}${lang === 'es' ? '/libros' : '/liburuak'}`, 
+    text: lang === 'es' ? 'Libros' : 'Liburuak' 
+  },
+  { 
+    href: `/${lang}${lang === 'es' ? '/comprar' : '/erosi'}`, 
+    text: lang === 'es' ? 'Comprar' : 'Erosi' 
+  }
+];
+
+// Obtener las rutas para los toggles de idioma
+const esPath = getEquivalentPath(url, lang, 'es');
+const euPath = getEquivalentPath(url, lang, 'eu');
+
+---
+
+<nav class="bg-teal-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href={`/${lang}/`} class="flex items-center">
+          <Image 
+            src={navbar_img || "/placeholder.svg"} 
+            alt="Logo" 
+            width={120} 
+            height={60}
+            class="h-14 w-auto"
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex md:items-center md:justify-center flex-grow">
+        <div class="flex items-baseline space-x-4">
+          {menuItems.map((item) => (
+            <a
+              href={item.href}
+              class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600 ${
+                url === item.href ? 'bg-teal-600' : ''
+              }`}
+            >
+              {item.text}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Language Toggle -->
+      <div class="hidden md:flex md:items-center">
+        <div class="flex items-center space-x-2">
+          <a 
+            href={esPath}
+            class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600 ${
+              lang === 'es' ? 'bg-teal-600' : ''
+            }`}
+          >
+            <div class="flex items-center">
+              🇪🇸
+              <Image 
+                src={spain || "/placeholder.svg"} 
+                alt="España" 
+                width={20} 
+                height={20}
+                class="h-5 w-auto ml-1"
+              />
+            </div>
+          </a>
+          <a 
+            href={euPath}
+            class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600 ${
+              lang === 'eu' ? 'bg-teal-600' : ''
+            }`}
+          >
+            <div class="flex items-center">
+              🇪🇺
+              <Image 
+                src={ikurrina || "/placeholder.svg"} 
+                alt="Euskera" 
+                width={20} 
+                height={20}
+                class="h-5 w-auto ml-1"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-teal-600 focus:outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="block h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="hidden md:hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {menuItems.map((item) => (
+        <a
+          href={item.href}
+          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-teal-600 ${
+            url === item.href ? 'bg-teal-600' : ''
+          }`}
+        >
+          {item.text}
+        </a>
+      ))}
+      <div class="border-t border-teal-600 mt-2 pt-2">
+        <a 
+          href={url.replace(/^\/[^\/]+/, '/es')} 
+          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-teal-600 ${
+            lang === 'es' ? 'bg-teal-600' : ''
+          }`}
+        >
+          🇪🇸 Español
+        </a>
+        <a 
+          href={url.replace(/^\/[^\/]+/, '/eu')} 
+          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-teal-600 ${
+            lang === 'eu' ? 'bg-teal-600' : ''
+          }`}
+        >
+          🇪🇺 Euskara
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('#mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

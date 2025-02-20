@@ -1,0 +1,60 @@
+---
+import translations from "@src/menus.json";
+
+// Layout
+import Layout from "@src/layouts/Layout.astro";
+
+// Components
+import Title from "@src/components/Title.astro";
+
+// Importar componentes
+import Image from "astro/components/Image.astro";
+
+// Images
+import charla1_img from "@src/assets/images/charla2.jpg";
+import firma_img from "@src/assets/images/firma.jpg";
+import libros_img from "@src/assets/images/libros.jpg";
+
+const url = Astro.url.pathname;
+const lang = url.startsWith("/eu") ? "eu" : "es"; // Detectar idioma desde la URL
+const t = translations[lang]; // Cargar traducciones
+---
+
+<Layout lang={lang}>
+  
+  <Title />
+  <div class="relative w-full max-w-4xl mx-auto mb-8">
+    <Image
+      src={charla1_img || "/placeholder.svg"}
+      alt="Evento de Eneritz Martín Díaz"
+      width={1200}
+      height={600}
+      class="w-full h-auto rounded-lg shadow-lg"
+    />
+  </div>
+
+  <div class="max-w-3xl mx-auto text-center mb-12">
+    <p class="text-lg text-gray-700 leading-relaxed">{t.principal_text}</p>
+  </div>
+  <!-- Additional Images Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+    <div class="relative">
+      <Image
+        src={libros_img || "/placeholder.svg"}
+        alt="Libro ESTELA"
+        width={600}
+        height={400}
+        class="w-full h-auto rounded-lg shadow-lg"
+      />
+    </div>
+    <div class="relative">
+      <Image
+        src={firma_img || "/placeholder.svg"}
+        alt="Firma de libros"
+        width={600}
+        height={400}
+        class="w-full h-auto rounded-lg shadow-lg"
+      />
+    </div>
+  </div>
+</Layout>
