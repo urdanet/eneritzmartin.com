@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import translations from "@src/translations.json";
 
 // Images
-import navbar_img from "@src/assets/images/navbar.jpg";
+import navbar_img from "@src/assets/images/navbar_bg_remove.webp";
 import flag_ikurrina from "@src/assets/images/flag_ikurrina.webp";
 import flag_spain from "@src/assets/images/flag_spain.png";
 
@@ -91,8 +91,8 @@ const euPath = getEquivalentPath(url, lang, 'eu');
             src={navbar_img || "/placeholder.svg"} 
             alt="Logo" 
             width={120} 
-            height={60}
-            class="h-14 w-auto"
+            height={80}
+            class="h-16 w-auto"
           />
         </a>
       </div>
