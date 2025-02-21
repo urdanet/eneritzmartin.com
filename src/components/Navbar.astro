@@ -81,7 +81,7 @@ const euPath = getEquivalentPath(url, lang, 'eu');
 
 ---
 
-<nav class="bg-teal-500">
+<nav class="bg-[#0097b2]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
@@ -104,8 +104,8 @@ const euPath = getEquivalentPath(url, lang, 'eu');
           {menuItems.map((item) => (
             <a
               href={item.href}
-              class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600 ${
-                url === item.href ? 'bg-teal-600' : ''
+              class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#005261] ${
+                url === item.href ? 'bg-[#005261]' : ''
               }`}
             >
               {item.text}
@@ -119,8 +119,8 @@ const euPath = getEquivalentPath(url, lang, 'eu');
         <div class="flex items-center space-x-2">
           <a 
             href={esPath}
-            class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600 ${
-              lang === 'es' ? 'bg-teal-600' : ''
+            class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#005261] ${
+              lang === 'es' ? 'bg-[#005261]' : ''
             }`}
           >
             <div class="flex items-center">
@@ -137,8 +137,8 @@ const euPath = getEquivalentPath(url, lang, 'eu');
           </a>
           <a 
             href={euPath}
-            class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-teal-600 ${
-              lang === 'eu' ? 'bg-teal-600' : ''
+            class={`px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-[#005261] ${
+              lang === 'eu' ? 'bg-[#005261]' : ''
             }`}
           >
             <div class="flex items-center">
@@ -160,7 +160,7 @@ const euPath = getEquivalentPath(url, lang, 'eu');
       <div class="md:hidden">
         <button
           type="button"
-          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-teal-600 focus:outline-none"
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-[#005261] focus:outline-none"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -191,8 +191,8 @@ const euPath = getEquivalentPath(url, lang, 'eu');
       {menuItems.map((item) => (
         <a
           href={item.href}
-          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-teal-600 ${
-            url === item.href ? 'bg-teal-600' : ''
+          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#005261] ${
+            url === item.href ? 'bg-[#005261]' : ''
           }`}
         >
           {item.text}
@@ -201,16 +201,16 @@ const euPath = getEquivalentPath(url, lang, 'eu');
       <div class="border-t border-teal-600 mt-2 pt-2">
         <a 
           href={url.replace(/^\/[^\/]+/, '/es')} 
-          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-teal-600 ${
-            lang === 'es' ? 'bg-teal-600' : ''
+          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#005261] ${
+            lang === 'es' ? 'bg-[#005261]' : ''
           }`}
         >
           🇪🇸 Español
         </a>
         <a 
           href={url.replace(/^\/[^\/]+/, '/eu')} 
-          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-teal-600 ${
-            lang === 'eu' ? 'bg-teal-600' : ''
+          class={`block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#005261] ${
+            lang === 'eu' ? 'bg-[#005261]' : ''
           }`}
         >
           🇪🇺 Euskara
