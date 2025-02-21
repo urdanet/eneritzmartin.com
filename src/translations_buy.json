@@ -1,0 +1,26 @@
+{
+  "es": {
+    "title": "Comprar",
+    "paragraph1": "Para adquirir un ejemplar de mi libro, por favor, ponte en contacto conmigo a través del correo electrónico",
+    "title3": "En este mensaje incluye:",
+    "list" : [
+      "Nombre completo",
+      "Cantidad de libros",
+      "Dirección de correo postal"
+    ],
+    "paragraph2": "Te responderé confirmando la disponibilidad del libro y proporcionándote todas las indicaciones necesarias para realizar el pago.",
+    "paragraph3": "!Gracias por tu interés!" 
+  },
+  "eu": {
+    "title": "Erosi",
+    "paragraph1": "Nire liburu bat erosteko, mesedez, jarri harremanetan nirekin posta elektronikoaren bidez",
+    "title3" : "Mezu honet anitzak:",
+    "list" : [
+      "Izen-abizenak",
+      "Liburu kopurua",
+      "Posta helbidea"
+    ],
+    "paragraph2": "Erantzun bat bidaliko dizut liburuaren eskuragarritasuna baieztatzeko eta ordainketa egiteko beharrezko argibide guztiak emateko.",
+    "paragraph3": "!Eskerrik asko zure interesa!"
+  }
+}

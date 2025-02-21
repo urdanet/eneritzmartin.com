@@ -1,0 +1,72 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Title from "@src/components/Title.astro";
+import Image from "astro/components/Image.astro";
+
+import translations from "@src/translations_buy.json";
+
+const url = Astro.url.pathname;
+const lang = url.startsWith("/eu") ? "eu" : "es";
+const t = translations[lang];
+
+import libros_caja_img from "@src/assets/images/libros_caja.jpg";
+import libro_mano_img from "@src/assets/images/libro_mano.jpg";
+
+---
+<Layout>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <Title title={`${t.title}`} />
+
+
+    <div class="space-y-6 max-w-2xl mx-auto mb-12">
+      <p class="text-lg">{t.paragraph1}<a
+          href="mailTo:estelamddp@hotmail.com"
+          class="text-teal-600 hover:underline"
+        >
+          estelamddp@hotmail.com
+        </a>.
+      </p>
+
+      <div>
+        <h3 class="font-medium mb-3">{t.title3}</h3>
+        <ul class="space-y-2">
+          <li class="flex items-center">
+            <span class="text-red-500 mr-2">▶</span>
+            {t.list[0]}
+          </li>
+          <li class="flex items-center">
+            <span class="text-red-500 mr-2">▶</span>
+            {t.list[1]}
+          </li>
+          <li class="flex items-center">
+            <span class="text-red-500 mr-2">▶</span>
+            {t.list[2]}
+          </li>
+        </ul>
+      </div>
+      <p>{t.paragraph2}</p>
+      <p class="font-medium">{t.paragraph3}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="relative">
+        <Image
+          src={libros_caja_img || "/placeholder.svg"}
+          alt="Libro en caja"
+          width={600}
+          height={400}
+          class="w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+      <div class="relative">
+        <Image
+          src={libro_mano_img || "/placeholder.svg"}
+          alt="Libro en mano"
+          width={600}
+          height={400}
+          class="w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+</Layout>
