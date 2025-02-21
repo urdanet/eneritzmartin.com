@@ -12,7 +12,7 @@ import { Image } from 'astro:assets';
 const { logo, title, description, logoAlt, href = "#" } = Astro.props
 ---
 <article class="bg-teal-500 text-white mb-4 overflow-hidden hover:bg-teal-600 transition-colors">
-  <a href={href} class="block p-4">
+  <a href={href} target="_blank" referrerpolicy="no-referrer"  class="block p-4">
     <div class="flex items-start gap-4">
       <div class="flex-shrink-0 w-1/4 max-w-[200px] bg-white p-2 rounded">
         <Image
@@ -20,6 +20,7 @@ const { logo, title, description, logoAlt, href = "#" } = Astro.props
           alt={logoAlt}
           width={200}
           height={100}
+          loading="eager"
           class="w-full h-auto object-contain"
         />
       </div>

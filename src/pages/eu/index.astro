@@ -26,9 +26,10 @@ const t = translations[lang]; // Cargar traducciones
   <div class="relative w-full max-w-4xl mx-auto mb-8">
     <Image
       src={charla1_img || "/placeholder.svg"}
-      alt="Evento de Eneritz Martín Díaz"
+      alt="Eneritz Martín Díaz gertaera."
       width={1200}
       height={600}
+      loading="eager"
       class="w-full h-auto rounded-lg shadow-lg"
     />
   </div>
@@ -41,18 +42,20 @@ const t = translations[lang]; // Cargar traducciones
     <div class="relative">
       <Image
         src={libros_img || "/placeholder.svg"}
-        alt="Libro ESTELA"
+        alt="Liburua: Bidaia"
         width={600}
         height={400}
+        loading="lazy"
         class="w-full h-auto rounded-lg shadow-lg"
       />
     </div>
     <div class="relative">
       <Image
         src={firma_img || "/placeholder.svg"}
-        alt="Firma de libros"
+        alt="Liburuen sinadura"
         width={600}
         height={400}
+        loading="lazy"
         class="w-full h-auto rounded-lg shadow-lg"
       />
     </div>
